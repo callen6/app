@@ -18,4 +18,28 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	 def youtube_client    
+    YouTubeIt::OAuth2Client.new(
+      client_access_token: token, 
+      client_id: ENV['CLIENT_ID'], 
+      client_secret: ENV['CLIENT_SECRET'], 
+      dev_key: ENV['DEV_KEY'],
+      client_refresh_token: refresh_token,
+      client_token_expires_at: expires_at)
+  end
+
+
+  def fetch_movie_history
+    #self.youtube_client.refresh_access_token!
+    watch_history = self.youtube_client.watch_history
+    watch_history.videos.each do |video|
+      movie = Movie.find_or_create_by(unique_id: video.unique_id)
+      movie.title = video.title
+      movie.description = video.description
+      movie.link = video.player_url
+      # this method returns something, but the img is suspect--correct for video? we'll see
+      movie.thumbnail = video.thumbnails[5].url
+      movie.save
+      self.movies << movie
+    end
 end
