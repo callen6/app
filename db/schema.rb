@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20131027215755) do
     t.string "unique_id"
     t.string "title"
     t.string "thumbnail"
-    t.string "description"
+    t.text   "description"
     t.string "url"
   end
 
