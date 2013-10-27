@@ -32,6 +32,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'pry-rails'
+gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
+gem 'youtube_it'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
