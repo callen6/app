@@ -1,3 +1,7 @@
 <h1>Me & You Tube</h1>
-<h2>Watched anything good lately?<h2>
-<div id="sign_in"><%= link_to "Sign in with Google", "/auth/google_oauth2" %></div>
+<h2>What should me & you watch together?<h2>
+
+<% @users.each do |user| %>
+	<%= image_tag user.image %>
+	<%= user.name %>
+<% end %>

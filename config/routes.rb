@@ -1,7 +1,7 @@
 App::Application.routes.draw do
-    resources :users
+  resources :users
 
-  root 'users#index'
+  root 'users#home'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   
