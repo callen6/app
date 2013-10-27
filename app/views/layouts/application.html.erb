@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="nav_bar">
+
+<% if current_user %>
+	<h3>Signed in as <% current_user.first_name %></h3>
+<% end %>
+
+</div>
 
 <%= yield %>
 
