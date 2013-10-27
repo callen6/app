@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
 			user.expires_at = auth_hash["credentials"]["expires_at"]
 		end
 	end
+
 end
