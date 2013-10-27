@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	has_and_belongs_to_many :movies
+
+	after_create :fetch_movie_history
 
 	def self.from_omniauth(auth_hash)
 		where(auth_hash.slice("provider", "uid")).first || create_from_omniauth(auth_hash)
@@ -37,8 +40,7 @@ class User < ActiveRecord::Base
       movie.title = video.title
       movie.description = video.description
       movie.link = video.player_url
-      # this method returns something, but the img is suspect--correct for video? we'll see
-      movie.thumbnail = video.thumbnails[5].url
+      movie.thumbnail = video.thumbnails[3].url
       movie.save
       self.movies << movie
     end
