@@ -38,8 +38,11 @@ gem 'omniauth-google-oauth2'
 gem 'youtube_it'
 
 ruby "2.0.0"
-gem 'rails_12factor', group: :production
 
+gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
+
+gem 'zurb-foundation'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
