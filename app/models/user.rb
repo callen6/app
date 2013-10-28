@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	has_and_belongs_to_many :movies
 
 	after_create :fetch_movie_history
-
+# need a better find_or_create method
 	def self.from_omniauth(auth)
 		where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
 	end

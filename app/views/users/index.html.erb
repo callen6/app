@@ -1,18 +1,36 @@
 
-<h1>What should we watch together?<h>
-<!-- 
-<#% @users.each do |user| %>
-	<#%= image_tag user.image %>
-	<#%= user.name %>
-<#% end %> -->
+<div class="row">
+	<div class="large-12 columns">
+		<br>
+		<br>
+		<h1>What should we watch together?</h1>
+		<br>
+		<br>
+	</div>
+</div>
 
-<% @users.each do |user| %>
- <% user.movies.each do |movie| %>
-		<p><%= link_to movie.title, movie.url %></p>
-		<iframe id="ytplayer" type="text/html" width="640" height="390" src=<%= image_tag movie.thumbnail %> frameborder="0"/>
+<div class="row">
+	<% @users.each do |user| %>
+	 	<% user.movies.each do |movie| %>
+		<div class="small-6 columns">
+				<div class="flex-video">
+					<iframe 
+						id="ytplayer" 
+						type="text/html" 
+						width="640" 
+						height="390" 
+						src="https://www.youtube.com/embed/<%= movie.unique_id %>" 
+						frameborder="0" 
+						controls="2" />
+						</iframe>
+				</div>
+		</div>
+		<% end %>
 	<% end %>
-<% end %>
 
-<!-- <div class="flex-video">
-  <iframe width="420" height="315" src="http://www.youtube.com/embed/0_EW8aNgKlA" frameborder="0" allowfullscreen></iframe>
-</div> -->
+<div class="row">
+	<div class="small-6 columns">
+		<br>
+		<br>
+	</div>
+</div>
