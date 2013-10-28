@@ -1,1 +1,6 @@
-<h1>Me & You Tube</h1>
+<h1>What've you been watching lately?</h1>
+ <% @user.movies.each do |movie| %>
+		<p><%= movie.title %></p>
+		<p><%= image_tag movie.thumbnail %></p>
+		<p><%= movie.url %></p>
+<% end %>

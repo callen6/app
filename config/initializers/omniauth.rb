@@ -5,7 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
    {
    		access_type: "offline",
       scope: "userinfo.email, userinfo.profile, plus.me, youtube",
-      prompt:"select_account",
+      prompt:" ",
       image_aspect_ratio: "square",
       image_size: 50
     }
