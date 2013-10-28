@@ -9,7 +9,7 @@
 <% @users.each do |user| %>
  <% user.movies.each do |movie| %>
 		<p><%= link_to movie.title, movie.url %></p>
-		<p><%= image_tag movie.thumbnail %></p>
+		<iframe id="ytplayer" type="text/html" width="640" height="390" src=<%= image_tag movie.thumbnail %> frameborder="0"/>
 	<% end %>
 <% end %>
 
