@@ -1,27 +1,27 @@
 class User < ActiveRecord::Base
-	has_and_belongs_to_many :movies
+  has_and_belongs_to_many :movies
 
-	after_create :fetch_movie_history
+  after_create :fetch_movie_history
 # need a better find_or_create method
-	def self.from_omniauth(auth)
-		where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
-	end
+  def self.from_omniauth(auth)
+    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  end
 
-	def self.create_from_omniauth(auth)
-		create! do |user|
-			user.provider = auth["provider"]
-			user.uid = auth["uid"]
-			user.name = auth["info"]["name"]
-			user.email = auth["info"]["email"]
-			user.image = auth["info"]["image"]
-			user.first_name = auth["info"]["first_name"]
-			user.token = auth["credentials"]["token"]
-			user.refresh_token = auth["credentials"]["refresh_token"]
-			user.expires_at = auth["credentials"]["expires_at"]
-		end
-	end
+  def self.create_from_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]      	
+      user.name = auth["info"]["name"]
+      user.email = auth["info"]["email"]
+      user.image = auth["info"]["image"]
+      user.first_name = auth["info"]["first_name"]
+      user.token = auth["credentials"]["token"]
+      user.refresh_token = auth["credentials"]["refresh_token"]
+      user.expires_at = auth["credentials"]["expires_at"]
+    end
+   end
 
-	 def youtube_client    
+  def youtube_client    
     YouTubeIt::OAuth2Client.new(
       client_access_token: token, 
       client_id: ENV['CLIENT_ID'], 
